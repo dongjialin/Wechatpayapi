@@ -7,9 +7,6 @@
  * --------------------------------------------------
  */
 
-//命名空间
-namespace think;
-
 class Wechatpay
 {
     private $appid;
@@ -54,16 +51,25 @@ class Wechatpay
 
         $dataxml = $this->postXmlCurl($url, $postData);
         if ($dataxml['return_code'] == "SUCCESS") {
-            $new['partnerid'] = $dataxml['mch_id'];
-            $new['appid'] = $dataxml['appid'];
-            $new['package'] = "Sign=WXPay";
-            $new['timestamp'] = (string)time();
-            $new['prepayid'] = $dataxml['prepay_id'];
-            $new['noncestr'] = $dataxml['nonce_str'];
-            ksort($new);
-            $str = $this->arr2str($options);
-            $new['sign'] = md5($str . "key=" . $this->key);
-            return $new;
+            if ($dataxml['result_code'] == "SUCCESS") {
+                $new['partnerid'] = $dataxml['mch_id'];
+                $new['appid'] = $dataxml['appid'];
+                $new['package'] = "Sign=WXPay";
+                $new['timestamp'] = (string)time();
+                $new['prepayid'] = $dataxml['prepay_id'];
+                $new['noncestr'] = $dataxml['nonce_str'];
+                ksort($new);
+                $str = $this->arr2str($options);
+                $new['sign'] = md5($str . "key=" . $this->key);
+
+                $data = array(
+                    'code' => 200,
+                    'content' => $new,
+                );
+                return $data;
+            }else{
+                return json_encode($dataxml);
+            }
         } else {
             return json_encode($dataxml);
         }
@@ -102,6 +108,7 @@ class Wechatpay
                 $str = $this->arr2str($new);
                 $new['paySign'] = md5($str . "key=" . $this->key);
                 $new['order_id'] = $options['out_trade_no'];
+                
                 $data = array(
                     'code' => 200,
                     'content' => $new,
