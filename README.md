@@ -28,4 +28,5 @@ $data = array(
 $res = $w->wechatOrderresult($data);
 ```
 
+- wechatCloseOrder 关闭订单
 - 持续更新中。。。
