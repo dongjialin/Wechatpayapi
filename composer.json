@@ -1,0 +1,12 @@
+{
+    "name": "lin/wechatpay",
+    "description": "一个简单的微信支付API",
+    "type": "library",
+    "authors": [
+        {
+            "name": "dongjialin",
+            "email": "494248656@qq.com"
+        }
+    ],
+    "require": {}
+}
