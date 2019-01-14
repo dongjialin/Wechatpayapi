@@ -1,5 +1,5 @@
 {
-    "name": "dongjialin/wechatpay",
+    "name": "dongjialin/wechatpayapi",
     "description": "一个简单的微信支付API",
     "type": "library",
     "authors": [
