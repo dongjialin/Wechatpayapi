@@ -3,7 +3,7 @@
  * --------------------------------------------------
  * 微信支付代码
  * --------------------------------------------------
- * Author: dongjialin、liuzhiming
+ * Author: dongjialin
  * --------------------------------------------------
  */
 
@@ -67,7 +67,7 @@ class Wechatpay
                     'content' => $new,
                 );
                 return $data;
-            }else{
+            } else {
                 return json_encode($dataxml);
             }
         } else {
@@ -108,7 +108,7 @@ class Wechatpay
                 $str = $this->arr2str($new);
                 $new['paySign'] = md5($str . "key=" . $this->key);
                 $new['order_id'] = $options['out_trade_no'];
-                
+
                 $data = array(
                     'code' => 200,
                     'content' => $new,
@@ -191,6 +191,27 @@ class Wechatpay
         $options['sign'] = strtoupper(md5($stringSignTemp));
         $postData = $this->buildXml($options);
         $url = 'https://api.mch.weixin.qq.com/pay/orderquery';
+        $dataxml = $this->postXmlCurl($url, $postData);
+        return $dataxml;
+    }
+
+    /**
+     * 关闭订单
+     * @param array $options
+     * out_trade_no 订单号
+     */
+    public function wechatCloseOrder($options)
+    {
+        $options['appid'] = $this->appid;
+        $options['mch_id'] = $this->mch_id;
+        $options['nonce_str'] = strtoupper(md5(time()));
+        ksort($options);
+        //签名
+        $stringA = $this->arr2str($options);
+        $stringSignTemp = $stringA . "key=" . $this->key;
+        $options['sign'] = strtoupper(md5($stringSignTemp));
+        $postData = $this->buildXml($options);
+        $url = 'https://api.mch.weixin.qq.com/pay/closeorder';
         $dataxml = $this->postXmlCurl($url, $postData);
         return $dataxml;
     }
