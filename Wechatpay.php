@@ -6,7 +6,7 @@
  * Author: dongjialin
  * --------------------------------------------------
  */
-
+namespace Wechatpayapi;
 class Wechatpay
 {
     private $appid;
