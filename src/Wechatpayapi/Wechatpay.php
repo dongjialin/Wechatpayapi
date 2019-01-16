@@ -1,12 +1,13 @@
 <?php
 /**
- * --------------------------------------------------
- * 微信支付代码
- * --------------------------------------------------
- * Author: dongjialin
- * --------------------------------------------------
+ * Created by PhpStorm.
+ * User: lin
+ * Date: 2019/1/16
+ * Time: 2:50 PM
  */
+
 namespace Wechatpayapi;
+
 class Wechatpay
 {
     private $appid;
