@@ -11,5 +11,10 @@
     "minimum-stability": "dev",
     "require": {
         "php":">=5.6.0"
-    }
+    },
+    "autoload": {
+        "psr-4": {
+            "Wechatpayapi\\": "wechatpayapi\\"
+        }
+    },
 }
