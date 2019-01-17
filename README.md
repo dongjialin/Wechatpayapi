@@ -1,5 +1,7 @@
 # 微信支付简单集成
 ```
+require __DIR__ . '/vendor/autoload.php';
+use Wechatpayapi\Wechatpay;
 $mp = array(
     'appid'=>'',//微信appid
     'mch_id'=>'',//商户号
