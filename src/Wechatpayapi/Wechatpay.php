@@ -10,28 +10,24 @@ namespace Wechatpayapi;
 
 class Wechatpay
 {
-    public static function world()
-    {
-        return 'Hello World, Composer!';
-    }
-//    private $appid;
-//    private $mch_id;
-//    private $key;
-//
-//    /**
-//     * 初始化参数
-//     *
-//     * @param array $options
-//     * @param $options ['appid']
-//     * @param $options ['mch_id']
-//     * @param $options ['key']
-//     */
-//    public function __construct($options)
-//    {
-//        $this->appid = isset($options['appid']) ? $options['appid'] : '';
-//        $this->mch_id = isset($options['mch_id']) ? $options['mch_id'] : '';
-//        $this->key = isset($options['key']) ? $options['key'] : '';
-//    }
+   private $appid;
+   private $mch_id;
+   private $key;
+
+   /**
+    * 初始化参数
+    *
+    * @param array $options
+    * @param $options ['appid']
+    * @param $options ['mch_id']
+    * @param $options ['key']
+    */
+   public function __construct($options)
+   {
+       $this->appid = isset($options['appid']) ? $options['appid'] : '';
+       $this->mch_id = isset($options['mch_id']) ? $options['mch_id'] : '';
+       $this->key = isset($options['key']) ? $options['key'] : '';
+   }
 
     /**
      * APP统一下单
