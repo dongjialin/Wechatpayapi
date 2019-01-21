@@ -8,7 +8,7 @@
 
 use Wechatpayapi\Wechatpay;
 
-require_once('./src/Wechatpay.php');
+require_once('./src/Wechatpayapi/Wechatpay.php');
 $mp = array(
     'appid' => 'wxa7b508bd77bd92e8',//微信appid
     'mch_id' => '1511118601',//商户号
