@@ -60,7 +60,7 @@ class Wechatpay
                 $new['prepayid'] = $dataxml['prepay_id'];
                 $new['noncestr'] = $dataxml['nonce_str'];
                 ksort($new);
-                $str = $this->arr2str($options);
+                $str = $this->arr2str($new);
                 $new['sign'] = md5($str . "key=" . $this->key);
 
                 $data = array(
